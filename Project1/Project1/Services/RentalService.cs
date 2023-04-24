@@ -7,17 +7,17 @@ namespace Project1.Services
         public double PricePerHour { get; private set; }
         public double PricePerDay { get; private set; }
 
-        /*
-            RentalService class is strongly coupled to the BrazilTaxService class.
-            If I have to change this service by another one, I will have to create it and modify it here.
-            This is not a comfortable situation, especially for maintenance purposes. 
-         */
-        private BrazilTaxService _brazilTaxService = new BrazilTaxService();
+        private ITaxService _taxService;
 
-        public RentalService(double pricePerHour, double pricePerDay)
+        /*
+          Inversion of control via dependency injection.
+          Now both services (RentalService and ITaxService) are decoupled from each other.
+         */
+        public RentalService(double pricePerHour, double pricePerDay, ITaxService taxService)
         {
             PricePerHour = pricePerHour;
             PricePerDay = pricePerDay;
+            _taxService = taxService;
         }
 
         public void ProcessInvoice(CarRental carRental)
@@ -34,7 +34,7 @@ namespace Project1.Services
                 basicPayment = PricePerDay * Math.Ceiling(duration.TotalDays);
             }
 
-            double tax = _brazilTaxService.Tax(basicPayment);
+            double tax = _taxService.Tax(basicPayment);
 
             carRental.Invoice = new Invoice(basicPayment, tax);
         }

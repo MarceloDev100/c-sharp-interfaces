@@ -24,7 +24,11 @@ namespace Project1
 
             CarRental carRental = new CarRental(start, finish, new Vehicle(model));
 
-            RentalService rentalService = new RentalService(hour, day);
+            /*
+             A RentalService class is instantiated by passing it the desired dependency (BrazilTaxService concret class).
+             BrazilTaxService will match TaxService in constructor via upcasting.
+             */
+            RentalService rentalService = new RentalService(hour, day, new BrazilTaxService());
             rentalService.ProcessInvoice(carRental);
 
             Console.WriteLine("INVOICE: ");
