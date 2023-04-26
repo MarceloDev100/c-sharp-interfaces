@@ -1,6 +1,6 @@
 ﻿namespace Project4.Entities
 {
-    class Printer : Device
+    class Printer : Device, IPrinter
     {
         public override void ProcessDoc(string doc)
         {
