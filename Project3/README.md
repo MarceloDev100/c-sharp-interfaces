@@ -2,7 +2,7 @@
 
 ### Commons aspects between inheritance and interfaces
 
-* Relationship "is a":
+* #### Relationship "is a":
 
 :arrow_right: A Circle or a Rectangle inherits from Shape abstract class. A Circle or a Rectangle is a Shape. Both Rectangle and Circle inherit attributes and operations from Shape when an object is created.
 
@@ -10,14 +10,14 @@
 :arrow_right: Another example with interface: If there is a TaxService interface with a tax operation, concret classes as BrazilTaxService and UsaTaxService must implement it inside them, unless they are created as abstract class too. In the same way, BrazilTaxService or UsaTaxService is a TaxService.
 
 
-* Generalization/specialization
+* #### Generalization/specialization
 
 :arrow_right: A Circle and a Rectangle are specialized classes from a generic class (Shape)
 
 :arrow_right: BrazilTaxService and UsaTaxService are specialized classes from a generic interface (TaxService).
 
 
-* Polymorphism
+* #### Polymorphism
 
 :arrow_right: A shape type variable created can refers to a inherited Rectangule or Circle concret class which has been instantiated.
 
